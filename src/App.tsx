@@ -9,17 +9,8 @@ import Item from './components/Item/Item.tsx';
 import { useState } from 'react';
 import AddedElement from './components/AddedElement/AddedElement.tsx';
 import TotalPrice from './components/TotalPrice/TotalPrice.tsx';
-
-interface IItems {
-  name: string;
-  price: number;
-  image: string;
-}
-
-interface ICount {
-  name: string;
-  count: number;
-}
+import { ICount, IItems } from './types';
+import Title from './components/Title/Title.tsx';
 
 const App = () => {
   const [countItems, setCountItems] = useState<ICount[]>([
@@ -70,7 +61,7 @@ const App = () => {
   return (
     <div className="mainContainer">
       <div className="container">
-        <h3 className="title">Add Items</h3>
+        <Title text={"Add Items"} />
         <div className="items">
           {items.map((item, index) => (
             <Item key={index + 1}
@@ -84,7 +75,7 @@ const App = () => {
       </div>
 
       <div className="container">
-        <h3 className="title">Order Details</h3>
+        <Title text={"Order Details"} />
         <div className="orderDetails">
           {totalCountItems < 1 ? <h3>нет добавленных позиций</h3> :
             <>
