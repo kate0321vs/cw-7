@@ -1,4 +1,4 @@
-import * as React from 'react';
+import "./TotalPrice.css"
 
 interface Props {
   price: number
@@ -6,7 +6,7 @@ interface Props {
 
 const TotalPrice: React.FC<Props> = ({ price }) => {
   return (
-    <p>Total Price: <strong>{price}</strong></p>
+    <p className="totalPrice">Total Price: {price}</p>
   );
 };
 

@@ -40,3 +40,28 @@
 .read-the-docs {
   color: #888;
 }
+
+.mainContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.items {
+  display: flex;
+  max-width: 600px;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+}
+
+.container {
+  background: white;
+  color: black;
+  padding: 30px 15px 40px;
+  border-radius: 10px;
+}
+
+.orderText {
+  font-size: 18px;
+}

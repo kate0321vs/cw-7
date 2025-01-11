@@ -1,10 +1,33 @@
 .itemImage {
-  width: 40px;
-  height: 40px;
+  width: 65px;
+  height: 65px;
 }
 
 .itemBtn {
   display: flex;
-  justify-content: space-between;
-  width: 300px;
+  gap: 10px;
+  width: 260px;
+  align-items: center;
+  background: white;
+  color: #000;
+  border: 1px solid rgba(0, 0, 0, 0.07);
+  box-shadow: 5px 5px 15px 0 rgba(0, 0, 0, 0.25);
+}
+
+.itemBtn:active {
+  box-shadow: -5px -5px 15px 0 rgba(0, 0, 0, 0.25);
+}
+
+.itemName {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 8px;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.itemPrice {
+  font-size: 16px;
+  font-weight: normal;
 }

@@ -11,12 +11,12 @@ const Item: React.FC<Props> = ({ name, image, price, onAddItem }) => {
   return (
     <button
       type="button"
-      className="itemtBtn"
+      className="itemBtn"
       onClick={onAddItem}>
       <img className="itemImage"
            src={image} alt={name}/>
-      <span className="itemName"> {name} </span>
-      Price: {price}
+      <span className="itemName"> {name} <span className="itemPrice">Price: {price}</span></span>
+
     </button>
   );
 };

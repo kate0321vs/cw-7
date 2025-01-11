@@ -1,3 +1,5 @@
+import "./Title.css"
+
 interface Props {
   text: string;
 }

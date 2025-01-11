@@ -77,7 +77,7 @@ const App = () => {
       <div className="container">
         <Title text={"Order Details"} />
         <div className="orderDetails">
-          {totalCountItems < 1 ? <h3>нет добавленных позиций</h3> :
+          {totalCountItems < 1 ? <p className='orderText'>Order is empty! Please add some items</p> :
             <>
               {countItems.map((item, index) => (
                 item.count > 0 ? (
@@ -89,11 +89,10 @@ const App = () => {
                     onDeleteItem={() => deleteItem(index)}
                   />) : null
               ))}
+              <TotalPrice price={totalPrice} />
             </>
           }
-
         </div>
-        <TotalPrice price={totalPrice} />
       </div>
     </div>
   );

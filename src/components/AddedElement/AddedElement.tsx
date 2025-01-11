@@ -1,3 +1,5 @@
+import "./AddedElement.css"
+
 interface Props {
   name: string;
   count: number;
@@ -8,8 +10,11 @@ interface Props {
 const AddedElement: React.FC<Props> = ({ name, count, onDeleteItem, price }) => {
   return (
     <div>
-      <h3>{name}<span> x {count} {price} KGS</span></h3>
-      <button type="button" onClick={onDeleteItem}></button>
+      <p className="orderItem"><span className="orderItemName">{name}</span>
+        <span className="orderItemCount"> x {count} </span>
+        <span className="orderItemPrice">{price} KGS</span>
+        <button className="deleteBtn" type="button" onClick={onDeleteItem}></button>
+      </p>
     </div>
   );
 };
