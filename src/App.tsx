@@ -7,6 +7,7 @@ import teaImage from './assets/tea.jpg';
 import colaImage from './assets/cola.jpg';
 import Item from './components/Item/Item.tsx';
 import { useState } from 'react';
+import AddedElement from './components/AddedElement/AddedElement.tsx';
 
 interface IItems {
   name: string;
@@ -46,14 +47,24 @@ const App = () => {
       return countItem;
     });
     setCountItems(newCount);
-  }
+  };
 
-  console.log(countItems);
+  const deleteItem = (index: number) => {
+    const newCount = countItems.map((item, i) => {
+      if (index === i && item.count > 0) {
+        return {...item, count: item.count - 1};
+      }
+      return item;
+    })
+    setCountItems(newCount);
+  };
+
+  const totalCountItems = countItems.reduce((acc, item) => acc + item.count, 0);
 
   return (
     <div className="mainContainer">
       <div className="container">
-        <h3 className='title'>Add Items</h3>
+        <h3 className="title">Add Items</h3>
         <div className="items">
           {items.map((item, index) => (
             <Item key={index + 1}
@@ -69,6 +80,19 @@ const App = () => {
       <div className="container">
         <h3 className="title">Order Details</h3>
         <div className="orderDetails">
+          {totalCountItems < 1 ? <h3>нет добавленных позиций</h3> :
+            <>
+              {countItems.map((item, index) => (
+                item.count > 0 ? (
+                  <AddedElement
+                    key={index + 1}
+                    name={item.name}
+                    count={item.count}
+                    onDeleteItem={() => deleteItem(index)}
+                  />) : null
+              ))}
+            </>
+          }
 
         </div>
         <p>Total Price: <strong></strong></p>
