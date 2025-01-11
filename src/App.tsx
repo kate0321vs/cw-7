@@ -6,6 +6,7 @@ import coffeeImage from './assets/coffee.jpg';
 import teaImage from './assets/tea.jpg';
 import colaImage from './assets/cola.jpg';
 import Item from './components/Item/Item.tsx';
+import { useState } from 'react';
 
 interface IItems {
   name: string;
@@ -13,7 +14,21 @@ interface IItems {
   image: string;
 }
 
+interface ICount {
+  name: string;
+  count: number;
+}
+
 const App = () => {
+  const [countItems, setCountItems] = useState<ICount[]>([
+    {name: 'Hamburger', count: 0},
+    {name: 'Cheeseburger', count: 0},
+    {name: 'Fries', count: 0},
+    {name: 'Coffee', count: 0},
+    {name: 'Tea', count: 0},
+    {name: 'Cola', count: 0},
+  ]);
+
   const items: IItems[] = [
     {name: 'Hamburger', price: 80, image: hamburgerImage},
     {name: 'Cheeseburger', price: 90, image: cheeseburgerImage},
@@ -23,8 +38,17 @@ const App = () => {
     {name: 'Cola', price: 40, image: colaImage}
   ];
 
-  const addItem = () => {
+  const addItem = (item: IItems) => {
+    const newCount = countItems.map((countItem) => {
+      if (item.name === countItem.name) {
+        return {...countItem, count: countItem.count + 1};
+      }
+      return countItem;
+    });
+    setCountItems(newCount);
   }
+
+  console.log(countItems);
 
   return (
     <div className="mainContainer">
@@ -36,7 +60,7 @@ const App = () => {
                   name={item.name}
                   price={item.price}
                   image={item.image}
-                  onAddItem={addItem}/>
+                  onAddItem={() => addItem(item)}/>
           ))
           }
         </div>
