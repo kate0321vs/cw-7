@@ -8,6 +8,7 @@ import colaImage from './assets/cola.jpg';
 import Item from './components/Item/Item.tsx';
 import { useState } from 'react';
 import AddedElement from './components/AddedElement/AddedElement.tsx';
+import TotalPrice from './components/TotalPrice/TotalPrice.tsx';
 
 interface IItems {
   name: string;
@@ -61,6 +62,11 @@ const App = () => {
 
   const totalCountItems = countItems.reduce((acc, item) => acc + item.count, 0);
 
+  const totalPrice = countItems.reduce((acc, countIngredient, index) => {
+    acc = acc + (countIngredient.count * items[index].price);
+    return acc;
+  }, 0)
+
   return (
     <div className="mainContainer">
       <div className="container">
@@ -88,6 +94,7 @@ const App = () => {
                     key={index + 1}
                     name={item.name}
                     count={item.count}
+                    price={item.count * items[index].price}
                     onDeleteItem={() => deleteItem(index)}
                   />) : null
               ))}
@@ -95,7 +102,7 @@ const App = () => {
           }
 
         </div>
-        <p>Total Price: <strong></strong></p>
+        <TotalPrice price={totalPrice} />
       </div>
     </div>
   );
